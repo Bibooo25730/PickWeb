@@ -1,0 +1,214 @@
+.header{
+    padding-top: 2%;
+    padding-bottom: calc(100% / 45);
+    height: 100vh;
+    background-image: url('https://s3.bmp.ovh/imgs/2023/05/13/119277dfd4202cfc.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image .8s ease;
+    opacity: 1;
+    filter: brightness(.8) contrast(110%) saturate(110%);
+}
+.nav_container{
+    /* animation:  rotate 2s  infinite; */
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+.leftButton{
+    border-radius:20em 0px 0px 20em;
+}
+.leftButton,.rightButton{
+
+    box-shadow: 0 0 10px rgb(241, 239, 239);
+    padding: 1% 0%;
+    margin: 0 1%;
+    background-color: #222222;
+}
+.rightButton{
+    
+    border-radius:0em 20em 20em 0em;
+}
+.li{
+    display: inline-block;
+    color: white;
+    line-height: 20px;
+    padding: 0 1em;
+    cursor: pointer;
+}
+.img{
+    position: relative;
+    border-radius: 50%;
+    animation: activePic .8s  ease-in;
+    transition:.3s ease-out;
+}
+.liimg{
+    position: relative;
+}
+.liimg::after{
+    content: "首页";
+    color: transparent;
+    text-align: center;
+    position: absolute;
+    left: 38%;
+    top: 90%;
+    font-weight: bolder;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    margin-left:-43px;
+    margin-top: -60px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* filter: blur(2.5em);  */
+
+}
+.liimg:hover::after{
+    color: #222222;
+    height: 20%;
+    background-color: transparent;
+}
+.img:hover{
+    box-shadow: 0 0 30px #f20c00;
+    transform: scale(1.1);
+}
+.Phone_SITE{
+     display: none;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-around;
+}
+.lines{
+    line-height: 8px;
+    width: 1.5rem;
+    box-sizing: unset;
+}
+.line{
+    padding: 0;
+    margin: 0;
+    background: #222222;
+    display: inline-block;
+    height: .125rem;
+    left: 0;
+    position: relative;
+    border-radius: .0625rem;
+    top: 0;
+    transition: all .4s;
+    vertical-align: top;
+    width: 100%;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,.5);
+}
+/* 左边导航栏 */
+.leftdiv{
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 60%;
+    height: 100%;
+    background-color: #071D2C;
+    z-index: 1;
+    transition: left 1s ease-in;
+    
+}
+.leftContainer{
+    padding: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.leftTop{
+    margin: 4%;
+}
+.leftfotter{
+    width: 100%;
+    text-align: center;
+    /* background-color: #131313; */
+}
+.leftContainers{
+    width: 100%;
+}
+.leftbody{
+    width: 100%;
+}
+.leftContainers  li{
+    text-align: center;
+    line-height: 4em;
+}
+.leftContainers  li:hover{
+    background-color: #071D2C;
+}
+.titleName{
+    text-align: center;
+    padding: 2%;
+}
+.titleName h3{
+    font-size: 3rem;
+    transition: font-size 1s ease-in;
+}
+.titleName h3:hover{
+    font-size: 3.5rem;
+}
+.titleName p{
+    font-size: 1.5rem;
+}
+.xia{
+    position: absolute;
+    left: calc(50% - 43px);
+    bottom: 20%;
+    color: #395915;
+    font-size: 5rem;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    animation: Topup 2s infinite ease-in;
+    cursor: pointer;
+}
+
+@keyframes Topup {
+      from {
+       bottom: 40%;
+      }
+      to{
+        bottom: 20%;
+      }
+}
+@keyframes activePic {
+    form{
+        transform: rotate(0deg); 
+    }
+    to{
+        transform: rotate(360deg);
+        box-shadow: 0 0 35px #f20c00;
+
+    }
+}
+
+@media (max-width: 768px){ 
+    .nav_container{
+        display: block;
+        flex-direction: column;
+    }
+    .liimg{
+        display: none;
+    }
+    .leftButton,.rightButton{
+        box-shadow: none !important;
+        background-color: transparent !important;
+    }
+    .li{
+        display: none;
+    }
+    .Phone_SITE{
+        display: flex;
+        padding: 0 2%;
+        justify-content: space-between;
+    }
+ }
+ @media (min-width: 768px){ 
+    .leftdiv{
+        display: none;
+    }
+ }

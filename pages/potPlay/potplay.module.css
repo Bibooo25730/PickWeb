@@ -1,0 +1,162 @@
+.playContainer{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.playLeft{
+    flex: 4.48 1;
+    transition:  marginTop 2s ease-in;
+    animation: ainimd 3s ease-in-out;
+}
+
+
+.PlayersContainer{
+    border: 1px solid #E7E0D6;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    display: flex;
+}
+
+.title{
+    flex: 2 ;
+    padding-left: 1%;
+}
+.Works > li{
+    line-height: 1.5em; 
+}
+.title> h1 {
+    line-height: 1;
+}
+.episodes{
+   background-color: #FFFFFF;
+}
+.episodesList{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.episodesList li{
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    border: 1px solid #E7E0D6;
+    background-color: antiquewhite;
+}
+/* 聊天室 */
+.zoomtitle {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 9%;
+}
+.playRight{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #E7E0D6;
+}
+.playRight > h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align:middle;
+}
+.ChatBox{
+   width: 100%;
+   height: calc(100% - 10%);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+.ChatBox .chatContainer{
+    width: 100%;
+    border-top: 1px solid #FFFFFF;
+    color: #FFFFFF;
+   
+    
+}
+.edit{
+   display: flex;
+   align-items: center;
+}
+.chatp{
+    text-align: center;
+    animation-name: texlength;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    /* animation-iteration-count: infinite; */
+    animation-direction: alternate;
+
+}
+.chatcom{
+    overflow: scroll;
+}
+#paragraph{
+    /* width: 90%; */
+    width: 100%;
+    caret-color: #FFFFFF;
+    height: 92%;
+    padding: 4%;
+    resize: none;
+    background-color: black;
+    color: #FFFFFF;
+    border-right: 0;
+}
+/* 评论 */
+.leftp,.rightp{
+    padding-top: 2%;
+}
+.leftp span,.rightp span{
+    font-size: 1.5em;
+    line-height: 1.5em;
+    display: block;
+}
+.leftp span {
+    color: rgb(239, 98, 98);
+}
+.rightp span{
+    color: rgb(228, 149, 121);
+
+}
+.rightp{
+    text-align: right;
+}
+.section{
+    height: 44rem;
+}
+@keyframes ainimd{
+   0%{
+    margin-top: 50px;
+   }
+   100%{
+   margin-top: 0px;
+   }
+}
+@keyframes texlength {
+    0%{
+     color: brown;
+    }
+    50%{
+        color: tomato;
+    }
+    100%{
+         display: none;
+    }
+    
+}
+
+@media (max-width: 768px){ 
+   .playRight{
+    display: none;
+   }
+   .section{
+    height: auto;
+   }
+   .episodesList li{
+    width: auto;
+   }
+ }
