@@ -1,16 +1,18 @@
 .header{
-    padding-top: 2%;
-    padding-bottom: calc(100% / 45);
+    /* padding-top: 2%;
+    padding-bottom: calc(100% / 45); */
+    border: 1px solid transparent;
     height: 100vh;
     background-image: url('https://s3.bmp.ovh/imgs/2023/05/13/119277dfd4202cfc.webp');
     background-size: cover;
     background-repeat: no-repeat;
-    transition: background-image .8s ease;
+    transition: all .8s ease;
     opacity: 1;
-    filter: brightness(.8) contrast(110%) saturate(110%);
+    filter: brightness(var(--brightness)) contrast(110%) saturate(110%);
 }
 .nav_container{
     /* animation:  rotate 2s  infinite; */
+    margin-top: 2%;
     display: flex;
     padding: 0;
     justify-content: center;
@@ -24,7 +26,9 @@
     box-shadow: 0 0 10px rgb(241, 239, 239);
     padding: 1% 0%;
     margin: 0 1%;
-    background-color: #222222;
+    background-color: var(--transparentcolor);
+    backdrop-filter: blur(20px);
+    transition: all .8s ease-in;
 }
 .rightButton{
     
