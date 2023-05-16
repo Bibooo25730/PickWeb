@@ -9,7 +9,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   images: {
-    domains: ['img.timelessq.com','localhost','vip.lz-cdn16.com'],
+    domains: ['img.timelessq.com','localhost','vip.lz-cdn16.com','imgurl.ink','s3.bmp.ovh'],
   },
   staticPageGenerationTimeout:60
 }
