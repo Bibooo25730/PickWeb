@@ -92,7 +92,7 @@ b {
 
 a {
   font-family: 'zpix';
-  color: #BF98D5;
+  color: var(--titilcolor);
   text-decoration: none;
 }
 
@@ -141,7 +141,7 @@ img {
   font-family: icomoon !important;
   font-style: normal;
   font-weight: 400;
-  color: #BF98D5;
+  color: var(--titilcolor);
   font-variant: normal;
   text-transform: none;
   line-height: 1;
@@ -188,4 +188,21 @@ img {
 
 .i-github:before {
   content: "\f1b4";
+}
+/* root */
+:root{
+  --primarycolor: #D5BFBA;
+  --primarybgcolor:#222222;
+  --transparentcolor:transparent;
+  --titilcolor:#BF98D5;
+  --libtncolor:#F9F9F9;
+  --brightness:1;
+  --contanercolor:#FFF2EC;
+  --boxsshowdcolor:rgb(241, 239, 239);
+}
+:root[theme='dark']{
+  --titilcolor:rgba(255,255,255,0.75);
+  --transparentcolor:#222222;
+  --brightness:.5;
+  --contanercolor:#363559;
 }
