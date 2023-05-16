@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    filter: brightness(var(--brightness)) contrast(110%) saturate(110%);
 }
 .wrapContainer{
     width: 100%;
