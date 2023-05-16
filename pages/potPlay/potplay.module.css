@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    filter: brightness(var(--brightness)) contrast(110%) saturate(110%);
 }
 .playLeft{
     flex: 4.48 1;
