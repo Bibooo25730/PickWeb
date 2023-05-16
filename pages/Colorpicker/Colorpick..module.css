@@ -1,7 +1,7 @@
 .Colorcontainer{
     position: relative;
-    border: 1px solid #E7E0D6;
     background-color: white;
+    filter: brightness(var(--brightness)) contrast(110%) saturate(110%);
     height: 100%;
     overflow: hidden;
     /* border-radius:20px; */
