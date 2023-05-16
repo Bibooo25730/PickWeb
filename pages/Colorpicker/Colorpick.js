@@ -1,8 +1,9 @@
 import Colorcs from "./Colorpick..module.css"
 import { useEffect, useState, useRef } from "react"
-
+import Image from 'next/image'
+import pick from '../../public/b8fcbf2f86e5fca8.webp'
 export default function ColorPick() {
-    let [ctx, setCtx] = useState();
+    let [ctx, setCtx] = useState(null);
     // 控制预览
     let [prfboolen, setprefboolen] = useState('none');
     let refim = useRef(0);
@@ -18,15 +19,15 @@ export default function ColorPick() {
     let [uplaod, setuplaod] = useState(false);
     useEffect(() => {
         drawIm();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     // 画图 function 
-    function drawIm() {
+function drawIm() {
         var c = document.getElementById("canvas");
         let ctxs = c.getContext("2d");
         var img = document.getElementById("imgol");
+        console.log(ctx)
         if (ctx) {
-            ctx.clearRect(0, 0, 885, 497)
+            ctx.clearRect(0, 0, 1000, 800)
             let w = img.width;
             let h = img.height;
             ctxs.drawImage(img, 0, 0, w, h);
@@ -191,13 +192,13 @@ export default function ColorPick() {
             <div id="cards" className={Colorcs.cardCon}>
                 <div ref={cards} className={Colorcs.card} >
                     <div className={Colorcs.imgol}   >
-                        <img id="imgol" onClick={handleTouch} alt="upload" src="https://s3.bmp.ovh/imgs/2023/05/13/b8fcbf2f86e5fca8.webp" ></img>
-
+                       
+                        <Image src={pick} id="imgol" alt="upload"   onClick={handleTouch}
+                       priority   width={965}
+                  height={497}></Image>
                         {/* <img id="imgol" style={{display:'none'}}   src="http://localhost:3000/_next/static/media/bg.a99082d1.png"></img> */}
                         <canvas style={{ display: 'none' }} id="canvas" width="885" height="497"></canvas>
-                        {/* <Image src=""
-                      alt="headPic" priority width={120}
-                  height={120}></Image> */}
+                        
                         <div ref={refim} className={Colorcs.cardsm}>
 
                         </div>
