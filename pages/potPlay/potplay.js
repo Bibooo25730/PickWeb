@@ -60,7 +60,6 @@ export default function PotPlay() {
           });
     }, [])
     async function Resulrapi() {
-       
             let result = await fetch('http://127.0.0.1:8080/api/Stardesc', {
             method: 'get',
             headers: {
