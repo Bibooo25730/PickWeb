@@ -2,7 +2,7 @@
     /* padding-top: 2%;
     padding-bottom: calc(100% / 45); */
     border: 1px solid transparent;
-    height: 100vh;
+    height: 100%;
     background-image: url('https://s3.bmp.ovh/imgs/2023/05/13/119277dfd4202cfc.webp');
     background-size: cover;
     background-repeat: no-repeat;
