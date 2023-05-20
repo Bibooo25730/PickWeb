@@ -151,7 +151,7 @@ border-right: 2px solid white;
 .Preview{
     /* border: 5px solid #E7E0D6; */
     position: absolute;
-    top: 25%;
+    top: 55%;
     width: 30%;
     left: 40%;
     box-shadow: 5px 5px 5px #2D2736;
@@ -232,7 +232,7 @@ border-right: 2px solid white;
         min-width: 100%;
     }
     .imgol img{
-        height: auto;
+        height: 200px;
     }
     .name h1{
         text-indent: 2px;
@@ -252,6 +252,9 @@ border-right: 2px solid white;
     }
     .btn{
        padding: 5%; 
+       margin: 0;
+       border: 1px solid rebeccapurple;
+      
     }
     .yello,.origin,.purper{
         padding: 5%;
@@ -269,6 +272,17 @@ border-right: 2px solid white;
     
     .colorFiex{
          margin-top: 0%;
+    }
+    .Preview{
+        opacity: 1;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        background-color: #F3FEB0;
+    }
+    .privimg{
+        width: 350px;
+        height: 350px;
     }
   
 }
