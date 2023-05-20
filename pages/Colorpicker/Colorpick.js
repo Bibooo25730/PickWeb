@@ -2,6 +2,9 @@ import Colorcs from "./Colorpick..module.css"
 import { useEffect, useState, useRef } from "react"
 import Image from 'next/image'
 import pick from '../../public/b8fcbf2f86e5fca8.webp'
+import { useRequest } from 'alova'
+import alovaInstance from '../api/hello'
+import {ComPressPost} from "../api/api"
 export default function ColorPick() {
     let [ctx, setCtx] = useState(null);
     // 控制预览
@@ -25,18 +28,16 @@ function drawIm() {
         var c = document.getElementById("canvas");
         let ctxs = c.getContext("2d");
         var img = document.getElementById("imgol");
+        let w = img.width;
+        let h = img.height;
         console.log(ctx)
         if (ctx) {
             ctx.clearRect(0, 0, 1000, 800)
-            let w = img.width;
-            let h = img.height;
-            ctxs.drawImage(img, 0, 0, w, h);
+            ctxs.drawImage(img, 0, 0,w,h);
             setCtx(ctx = ctxs)
            
         }else{
-            let w = img.width;
-            let h = img.height;
-        ctxs.drawImage(img, 0, 0, w, h);
+        ctxs.drawImage(img, 0, 0,w,h);
         setCtx(ctx = ctxs)
         }
       
@@ -84,17 +85,8 @@ function drawIm() {
     }
     async function handleUploads(e){
         inpref.current.click()
-        let img = {
-            imgName:imgs.name
-        }
-        let rem = await fetch('http://localhost:8080/api/remove', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(img)
-        })
-        let result = await rem.json()
+        // 删除请求
+        handleRemoveTodo()
     }
     async function handleChange(e) {
             sedFile(e)
@@ -102,54 +94,72 @@ function drawIm() {
     // 发送图片函数
    async function sedFile(e){
         const { files } = e.target;
+        console.log(files)
         //  FileRender 异步读取计算机文件
         const reader = new FileReader();
         const formData = new FormData();
         formData.append('image', files[0])
         setimgs(imgs = files[0]);
         //  readAsDataURL 指定 bold内容或file
-        reader.readAsDataURL(files[0])
-        reader.onload = (evt) => {
-            // 上传展示图片
-            pref.current.src = evt.currentTarget.result;
-            var img = document.getElementById("imgol");
-            img.src = evt.currentTarget.result
-            setprefboolen(prfboolen = 'block')
-            drawIm()
+        console.log(files[0])
+        if(typeof files[0] !== 'undefined'){
+            reader.readAsDataURL(files[0])
+            reader.onload = (evt) => {
+                // 上传展示图片
+                pref.current.src = evt.currentTarget.result;
+                var img = document.getElementById("imgol");
+                console.log(img)
+                img.srcset = '';
+                img.src = evt.currentTarget.result
+                setprefboolen(prfboolen = 'block')
+                drawIm()
+            }
         }
-        const res = await fetch('http://localhost:8080/api/ComPress', {
-            method: 'POST',
-            body: formData
-        })
-        console.log(res)
+       
+        handleAddTodo(formData)
     }
+    // 上传请求
+      const {send: addTodo} = useRequest(formData => alovaInstance.Post('/api/ComPress', formData), {
+        immediate: false
+      });
+      
+      // 手动发送请求
+      const handleAddTodo = (formData) => {
+        // send函数返回一个Promise对象，可接收响应数据
+        addTodo(formData)
+      };
+    // 取消
     async function handleExit() {
         pref.current.src = '';
         // 输出第一次上传的文件，再次上传相同文件，无法触发 change 事件
         inpref.current.value = '';
-        setprefboolen(prfboolen = 'none');
-        let img = {
-            imgName: imgs.name
-        }
-        let res = await fetch('http://localhost:8080/api/remove', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(img)
-        })
-        if (res.ok) {
-            console.log('已经删除了你上传的图片')
-        } else {
-            console.log(res)
-        }
+        setprefboolen(prfboolen = 'none'); 
+        // 删除请求
+         handleRemoveTodo()
     }
+    //取消并删除图片
+    const {send: RemoveTodo} = useRequest(newTodo => alovaInstance.Post('/api/remove', newTodo), {
+        immediate: false
+      });
+      
+      // 手动发送请求
+      const handleRemoveTodo = () => {
+        console.log(imgs)
+       if(imgs){
+        let newTodo = {
+            imgName: imgs.name,
+          };
+          RemoveTodo(newTodo)
+       }
+        // send函数返回一个Promise对象，可接收响应数据
+        
+      };
     // 下载压缩图片接口
     async function handleUploadServer() {
         let img = {
             imgName: imgs.name
         }
-        let res = await fetch('http://localhost:8080/api/download', {
+        let res = await fetch('http://162.14.108.172:3001/api/download', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -192,12 +202,11 @@ function drawIm() {
             <div id="cards" className={Colorcs.cardCon}>
                 <div ref={cards} className={Colorcs.card} >
                     <div className={Colorcs.imgol}   >
-                       
                         <Image src={pick} id="imgol" alt="upload"   onClick={handleTouch}
                        priority   width={965}
                   height={497}></Image>
                         {/* <img id="imgol" style={{display:'none'}}   src="http://localhost:3000/_next/static/media/bg.a99082d1.png"></img> */}
-                        <canvas style={{ display: 'none' }} id="canvas" width="885" height="497"></canvas>
+                        <canvas style={{ display: 'none',marginTop:'80px' }} id="canvas" width="965" height="497" ></canvas>
                         
                         <div ref={refim} className={Colorcs.cardsm}>
 
