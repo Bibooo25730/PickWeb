@@ -1,11 +1,29 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { createAlova, useRequest } from 'alova';
+import { createAlova } from 'alova';
 import GlobalFetch from 'alova/GlobalFetch';
 import ReactHook from 'alova/react';
 
 const alovaInstance = createAlova({
-  baseURL: 'http://127.0.0.1:8080/api/',
+  baseURL: 'http://162.14.108.172:3001/',
   statesHook: ReactHook,
-  requestAdapter: GlobalFetch()
+  requestAdapter: GlobalFetch(),
+  responded: {
+    onSuccess: async (response, method) => {
+      if (response.status >= 400) {
+        console.log(response)
+      }
+      const json = await response.json();
+      console.log(json)
+      // if (json.code !== 200) {
+      //   // 抛出错误或返回reject状态的Promise实例时，此请求将抛出错误
+      //   throw new Error(json.message);
+      // }
+
+      return json;
+    },
+    onError: (err, method) => {
+      console.log(err)
+    }
+  }
 });
 export default alovaInstance;
