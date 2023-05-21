@@ -57,7 +57,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-left: 1px solid #E7E0D6;
+    border: 1px solid #E7E0D6;
 }
 .playRight > h1{
     margin: 0;
@@ -67,7 +67,7 @@
 }
 .ChatBox{
    width: 100%;
-   height: calc(100% - 10%);
+   height: 100%;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -151,8 +151,21 @@
 }
 
 @media (max-width: 768px){ 
+    .playContainer{
+        flex-direction: column;
+    }
+    .title> h1 {
+        display: none;
+        line-height: 1;
+    }
+    .playLeft{
+        flex: 1;
+        transition:  marginTop 2s ease-in;
+        animation: ainimd 3s ease-in-out;
+    }
    .playRight{
-    display: none;
+    display: block;
+    /* display: none; */
    }
    .section{
     height: auto;
@@ -160,4 +173,7 @@
    .episodesList li{
     width: auto;
    }
+   .zoomtitle {
+   display: none;
+ }
  }
