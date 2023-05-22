@@ -4,7 +4,7 @@ import GlobalFetch from 'alova/GlobalFetch';
 import ReactHook from 'alova/react';
 
 const alovaInstance = createAlova({
-  baseURL: 'http://162.14.108.172:3001/',
+  baseURL: 'http://162.14.108.172:8080/',
   statesHook: ReactHook,
   requestAdapter: GlobalFetch(),
   responded: {
