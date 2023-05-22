@@ -190,9 +190,9 @@ export default function Rtc() {
                     <input ref={inRef} id={Rtclss.recId} ></input>
                     <button onClick={handleServer} className={Rtclss.btn}>连接</button>
                 </div>
-
+                <div ref={secction}>状态:</div>
             </div>
-            <div ref={secction}>状态:</div>
+           
         </div>
     )
 }
