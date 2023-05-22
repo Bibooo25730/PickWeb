@@ -13,7 +13,6 @@
 .wrapContainer{
     width: 100%;
     display: flex;
-   
    justify-content: space-between; 
 }
 .wrap{
@@ -199,6 +198,27 @@
     color: #347aa5;
     cursor: pointer;
   }  */
-  
-
-
+@media (max-width:768px) {
+  .wrapContainer{
+    flex-direction: column;
+    height: 100%;
+}
+.container{
+  margin: 0%;
+  height: 100%;
+  justify-content:flex-start;
+}
+.left{
+  width: 100%;
+  /* background-color: #f1ddbc; */
+}
+.right{
+  width: 100%;
+}
+.chatcom{
+  height: 150px;
+}
+.Rooms > div{
+   text-align: center;
+}
+}
