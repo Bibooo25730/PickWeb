@@ -28,13 +28,16 @@ export default function PotPlay() {
         nanoid.id = nanoid();
         setId(id = nanoid.id)
         // Resulrapi();
-        const socket = io("ws://localhost:3000");
+        const socket = io("ws://162.14.108.172:3000");
         setSocket(sockets = socket)
         socket.on("connection", function (socket) {
-            pref.current.innerText = '正在连接中'
+            pref.current?pref.current.innerText = '正在连接中':'';
+            
         })
         socket.on("connect", () => {
-            pref.current.style = 'display: none';
+            console.log('连接成功')
+            pref.current?pref.current.style = 'display: none':'';
+            
 
         })
 
