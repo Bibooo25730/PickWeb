@@ -6,6 +6,7 @@ export default function Rtc() {
     let inRef = useRef();
     let secction = useRef();
     let chatcom = useRef();
+    let left = useRef();
     let [peer, setPeer] = useState(null);
     // id 
     let [Pid, setId] = useState('');
@@ -76,19 +77,50 @@ export default function Rtc() {
             const browserSupportsMedia = () => {
                 return navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.mzGetUserMedia
             }
-           
-            peer.on('call', function(call) {
-                console.log(call)
-                browserSupportsMedia({video: true, audio: true}, function(stream) {
-                call.answer(stream); // Answer the call with an A/V stream.
-                call.on('stream', function(remoteStream) {
-                    console.log(remoteStream)
-                    const video = document.getElementById('video');
-                        video.srcObject = remoteStream;
+     
+            peer.on('call', function (call) {
+                
+                left.current.style.display = 'none';
+                    if (navigator.mediaDevices === undefined) {
+                        navigator.mediaDevices = {};
+                    }
+                    if (navigator.mediaDevices.getUserMedia === undefined) {
+                        navigator.mediaDevices.getUserMedia = function (constraints) {
+                            var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                            if (!getUserMedia) {
+                                return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                            }
+                            return new Promise(function (resolve, reject) {
+                                getUserMedia.call(navigator, constraints, resolve, reject);
+                            });
+                        }
+                    }
+                    navigator.mediaDevices.getUserMedia({ audio: true, video: { width: 1000, height: 600 } })
+                        .then(function (stream) {
+
+                              call.answer(stream);
+                            call.on('stream', function (remoteStream) {
+                                console.log('remoteStrem',remoteStream)
+                            if ("srcObject" in video) {
+                                video.srcObject = remoteStream;
+                            } else {
+                                video.src = window.URL.createObjectURL(remoteStream);
+                            }
+                            });
+                           
+                            video.onloadedmetadata = function (e) {
+                                video.play();
+                            };
+                        })
+                        .catch(function (err) {
+                            console.log(err.name + ": " + err.message);
+                        });
+               
+                browserSupportsMedia({ video: true, audio: true }, function (stream) {
+                  
+                }, function (err) {
+                    console.log('Failed to get local stream', err);
                 });
-              }, function(err) {
-                console.log('Failed to get local stream' ,err);
-              });
             });
             return peers;
 
@@ -96,7 +128,7 @@ export default function Rtc() {
         fn();
 
         drop()
-       
+
     }, [])
     function handleServer() {
         //   获取房间号
@@ -143,7 +175,7 @@ export default function Rtc() {
     function handleChange(e) {
         if (e.keyCode == 13) {
             let value = e.target.value;
-            console.log('connser',connser)
+            console.log('connser', connser)
             if (connser) {
                 connser.send(value)
                 let rightp = document.createElement('div');
@@ -158,10 +190,6 @@ export default function Rtc() {
             }
         }
     }
-    // function handleDrag(e) {
-    //     console.log(e)
-    // }
-    // 上传文件
     function upload() {
         console.log(fileArr, connser)
         let file = {
@@ -203,22 +231,44 @@ export default function Rtc() {
     }
     // 摄像头
     function handledeep() {
+        left.current.style.display = 'none';
         if (connser) {
-            const browserSupportsMedia = () => {
-                return navigator.mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.mzGetUserMedia
-            }
+          
            
-            browserSupportsMedia({ video: true, audio: true }, function (stream) {
-                var call = peer.call(Pid, stream);
-                call.on('stream', function (remoteStream) {
-                    // Show stream in some video/canvas element.
-                    console.log('stream', remoteStream)
+            if (navigator.mediaDevices === undefined) {
+                navigator.mediaDevices = {};
+            }
+            if (navigator.mediaDevices.getUserMedia === undefined) {
+                navigator.mediaDevices.getUserMedia = function (constraints) {
+                    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                    if (!getUserMedia) {
+                        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                    }
+                    return new Promise(function (resolve, reject) {
+                        getUserMedia.call(navigator, constraints, resolve, reject);
+                    });
+                }
+            }
+            navigator.mediaDevices.getUserMedia({ audio: true, video: { width: 1000, height: 600 } })
+                .then(function (stream) {
                     const video = document.getElementById('video');
-                    video.srcObject = remoteStream;
+                    console.log(peer)
+                    var call = peer.call(Pid, stream);
+                    call.on('stream', function (remoteStream) {
+                    if ("srcObject" in video) {
+                        video.srcObject = remoteStream;
+                    } else {
+                        video.src = window.URL.createObjectURL(remoteStream);
+                    }
+                    });
+                   
+                    video.onloadedmetadata = function (e) {
+                        video.play();
+                    };
+                })
+                .catch(function (err) {
+                    console.log(err.name + ": " + err.message);
                 });
-            }, function (err) {
-                console.log('Failed to get local stream', err);
-            });
         } else {
             alert('没连接')
         }
@@ -226,10 +276,10 @@ export default function Rtc() {
     return (
         <div className={Rtclss.container}>
             <div className={Rtclss.wrapContainer}>
-                <div className={Rtclss.left}>
+                <div  className={Rtclss.left}>
                     <div className={Rtclss.wrap}>
                         <video id="video" webkit-playsinline="true" playsinline x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true" className={Rtclss.video} x5-video-orientation="portraint" controls></video>
-                        <div className={Rtclss.shext}><button onClick={handledeep}>摄像头</button></div>
+                        <div ref={left} className={Rtclss.shext}><button onClick={handledeep}>摄像头</button></div>
                     </div>
                 </div>
                 <div className={Rtclss.right}>
