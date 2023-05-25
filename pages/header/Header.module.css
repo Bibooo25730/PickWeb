@@ -159,6 +159,7 @@
     font-size: 1.5rem;
 }
 .xia{
+    width: 43px;
     position: absolute;
     left: calc(50% - 43px);
     bottom: 20%;
