@@ -14,6 +14,7 @@ export default function Rtc() {
     let [fileArr, setfileArr] = useState();
     // section
     let [connser, setConn] = useState(null);
+    let FileRef = useRef();
     useEffect(() => {
         const fn = async () => {
             const PeerJs = (await import('peerjs')).default;
@@ -22,10 +23,12 @@ export default function Rtc() {
             peers.on("open", function (id) {
                 console.log(id)
                 secction.current.innerText = `状态为：对等ID:${id}`
-
+    
             })
             console.log(peers)
             peer.on('connection', function (conn) {
+                console.log(conn)
+                setId(Pid = conn.peer)
                 // 接受对方传来的数据
                 secction.current.innerText = `状态为：:连接成功 `
                 conn.on('data', function (data) {
@@ -167,13 +170,58 @@ export default function Rtc() {
                 console.log('收到的数据', typeof (data))
 
             })
+            // conn.on('call', function (call) {
+                
+            //     left.current.style.display = 'none';
+            //         if (navigator.mediaDevices === undefined) {
+            //             navigator.mediaDevices = {};
+            //         }
+            //         if (navigator.mediaDevices.getUserMedia === undefined) {
+            //             navigator.mediaDevices.getUserMedia = function (constraints) {
+            //                 var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+            //                 if (!getUserMedia) {
+            //                     return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+            //                 }
+            //                 return new Promise(function (resolve, reject) {
+            //                     getUserMedia.call(navigator, constraints, resolve, reject);
+            //                 });
+            //             }
+            //         }
+            //         navigator.mediaDevices.getUserMedia({ audio: true, video: { width: 1000, height: 600 } })
+            //             .then(function (stream) {
+
+            //                   call.answer(stream);
+            //                 call.on('stream', function (remoteStream) {
+            //                     console.log('remoteStrem',remoteStream)
+            //                 if ("srcObject" in video) {
+            //                     video.srcObject = remoteStream;
+            //                 } else {
+            //                     video.src = window.URL.createObjectURL(remoteStream);
+            //                 }
+            //                 });
+                           
+            //                 video.onloadedmetadata = function (e) {
+            //                     video.play();
+            //                 };
+            //             })
+            //             .catch(function (err) {
+            //                 console.log(err.name + ": " + err.message);
+            //             });
+               
+            //     browserSupportsMedia({ video: true, video: { width: 1000, height: 600 } }, function (stream) {
+                  
+            //     }, function (err) {
+            //         console.log('Failed to get local stream', err);
+            //     });
+            // });
         })
         setConn(connser = conn)
 
         // console.log(peer)
     }
     function handleChange(e) {
-        if (e.keyCode == 13) {
+        // 安卓上“下一项、搜索、换行”等键相当于tab键，keycode=9，苹果手机换行键不变依旧相当于enter，keycode=13
+        if (e.keyCode == 13 ||e.keyCode == 9) {
             let value = e.target.value;
             console.log('connser', connser)
             if (connser) {
@@ -233,8 +281,6 @@ export default function Rtc() {
     function handledeep() {
         left.current.style.display = 'none';
         if (connser) {
-          
-           
             if (navigator.mediaDevices === undefined) {
                 navigator.mediaDevices = {};
             }
@@ -252,7 +298,7 @@ export default function Rtc() {
             navigator.mediaDevices.getUserMedia({ audio: true, video: { width: 1000, height: 600 } })
                 .then(function (stream) {
                     const video = document.getElementById('video');
-                    console.log(peer)
+                    console.log(Pid)
                     var call = peer.call(Pid, stream);
                     call.on('stream', function (remoteStream) {
                     if ("srcObject" in video) {
@@ -273,6 +319,15 @@ export default function Rtc() {
             alert('没连接')
         }
     }
+    //上传文件
+    function handleFile(){
+        FileRef.current.click();
+    }
+    function handleFiles(e){
+        let fileArrx = [];
+        fileArrx.push(e.target.files[0]);
+        setfileArr(fileArr = fileArrx);
+    }
     return (
         <div className={Rtclss.container}>
             <div className={Rtclss.wrapContainer}>
@@ -288,14 +343,15 @@ export default function Rtc() {
                      <div ref={rightp} className={play.rightp}><span></span></div> */}
                     </div>
                     <div className={Rtclss.edit}>
-                        <input id={Rtclss.paragraph} onKeyDown={handleChange} placeholder="发送消息" rows="1" ></input>
+                        <input type={'search'} id={Rtclss.paragraph} onKeyDown={handleChange} placeholder="发送消息" rows="1" ></input>
 
                     </div>
                     <div className={Rtclss.main}>
-                        <p className={Rtclss.drop_text}>拖拽文件到此上传文件/
-                            <span onClick={upload}>点击上传</span>
+                        <p className={Rtclss.drop_text}>拖拽文件到此或者点击
+                            <span style={{'marginLeft':'20px','cursor':'pointer'}} onClick={upload}>点击上传</span>
                         </p>
-                        <div ref={drops} className={Rtclss.drop_box}>
+                        <div ref={drops} onClick={handleFile}  className={Rtclss.drop_box}>
+                        <input onChange={handleFiles} ref={FileRef} className={Rtclss.file} type="file"  name="file" />
                         </div>
 
                     </div>
