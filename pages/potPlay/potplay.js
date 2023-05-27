@@ -105,7 +105,7 @@ export default function PotPlay() {
                         {/* <div className={play.img} >
                             <Image alt="starimg" width={260} height={360} priority src="http://localhost:8080/star.jpeg"></Image>
                         </div> */}
-                        {console.log(map)}
+                       
                         {data.map((value, key) =>
                             <div className={play.title} key={key}> <h1>{value.title}</h1>
                                 <ul className={play.Works}>
