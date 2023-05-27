@@ -10,6 +10,9 @@
     align-items: center;
     filter: brightness(var(--brightness)) contrast(110%) saturate(110%);
 }
+.file{
+  display: none;
+}
 .wrapContainer{
     width: 100%;
     display: flex;
