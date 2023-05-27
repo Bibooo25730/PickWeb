@@ -116,7 +116,7 @@ export default function Rtc() {
                             console.log(err.name + ": " + err.message);
                         });
                
-                browserSupportsMedia({ video: true, audio: true }, function (stream) {
+                browserSupportsMedia({ video: true, video: { width: 1000, height: 600 } }, function (stream) {
                   
                 }, function (err) {
                     console.log('Failed to get local stream', err);
