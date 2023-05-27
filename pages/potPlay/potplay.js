@@ -28,7 +28,7 @@ export default function PotPlay() {
         nanoid.id = nanoid();
         setId(id = nanoid.id)
         // Resulrapi();
-        const socket = io("ws://rtc.bibooo.top:3000");
+        const socket = io("ws:https://rtc.bibooo.top:3000");
         setSocket(sockets = socket)
         socket.on("connection", function (socket) {
             pref.current?pref.current.innerText = '正在连接中':'';
