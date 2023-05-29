@@ -321,12 +321,17 @@ export default function Rtc() {
     }
     //上传文件
     function handleFile(){
-        FileRef.current.click();
+        if(connser){
+            FileRef.current.click();
+        }else{
+            alert('没连接')
+        }
+        
     }
     function handleFiles(e){
-        let fileArrx = [];
-        fileArrx.push(e.target.files[0]);
-        setfileArr(fileArr = fileArrx);
+            let fileArrx = [];
+            fileArrx.push(e.target.files[0]);
+            setfileArr(fileArr = fileArrx);
     }
     return (
         <div className={Rtclss.container}>
