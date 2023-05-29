@@ -2,7 +2,7 @@ import play from "./potplay.module.css";
 import Image from 'next/image';
 import dynamic from "next/dynamic";
 import { useEffect, useState, useRef } from "react";
-import { io } from "socket.io-client";
+import { io,Manager } from "socket.io-client";
 import { nanoid } from "nanoid"
 import { useRequest } from "alova"
 import {StardescListGetter} from "../api/api"
@@ -28,8 +28,10 @@ export default function PotPlay() {
         nanoid.id = nanoid();
         setId(id = nanoid.id)
         // Resulrapi();
-        const socket = io("ws://rtc.bibooo.top:3000");
-        setSocket(sockets = socket)
+        const manager = new Manager("https://rtc.bibooo.top:3001");
+        const socket = manager.socket("/");
+        // const socket = io("ws://rtc.bibooo.top:3001")
+        // setSocket(sockets = socket)
         socket.on("connection", function (socket) {
             pref.current?pref.current.innerText = '正在连接中':'';
             
