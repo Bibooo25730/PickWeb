@@ -110,8 +110,8 @@ export default function Header(props) {
         </ul>
       </nav>
       <div className={header.titleName}>
-        <h3 className={'animate__animated animate__pulse'}>Angel eyes</h3>
-        <p>We are told to remember the idea and not the man.</p>
+        <h3>Angel eyes</h3>
+        <p>Our dignity is not worth much, but it's the only thing we deserve.</p>
 
       </div>
       <div className={header.xia} title="下滑"><b onClick={handlePage}>↓</b></div>
