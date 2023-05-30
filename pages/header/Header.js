@@ -111,7 +111,7 @@ export default function Header(props) {
       </nav>
       <div className={header.titleName}>
         <h3 >Angel eyes</h3>
-        <p>Our dignity is not worth much, but it's the only thing we deserve.</p>
+        <p>Our dignity is not worth much, but  the only thing we deserve.</p>
 
       </div>
       <div className={header.xia} title="下滑"><b onClick={handlePage}>↓</b></div>
