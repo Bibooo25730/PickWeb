@@ -1,12 +1,10 @@
 
 .container{
     margin: 5%;
-    height: 78%;
     border: 1px solid #ccc;
     color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     filter: brightness(var(--brightness)) contrast(110%) saturate(110%);
 }
