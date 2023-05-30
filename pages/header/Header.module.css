@@ -158,9 +158,7 @@
     font-size: 3rem;
     transition: font-size 1s ease-in;
 }
-.titleName h3:hover{
-    font-size: 3.5rem;
-}
+
 .titleName p{
     font-size: 1.5rem;
 }
