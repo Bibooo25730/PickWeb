@@ -113,8 +113,13 @@
     height: 100%;
     background-color: #071D2C;
     z-index: 1;
-    transition: left 1s ease-in;
-    
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
+    transition: 0.5s ease all;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .leftContainer{
     padding: 20%;
