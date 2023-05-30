@@ -28,7 +28,7 @@ export default function PotPlay() {
         nanoid.id = nanoid();
         setId(id = nanoid.id)
         // Resulrapi();
-        const manager = new Manager("http://rtc.bibooo.top:3001");
+        const manager = new Manager("https://rtc.bibooo.top");
         const socket = manager.socket("/");
         // const socket = io("ws://rtc.bibooo.top:3001")
         // setSocket(sockets = socket)
