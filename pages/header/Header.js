@@ -110,7 +110,7 @@ export default function Header(props) {
         </ul>
       </nav>
       <div className={header.titleName}>
-        <h3>Angel eyes</h3>
+        <h3 >Angel eyes</h3>
         <p>Our dignity is not worth much, but it's the only thing we deserve.</p>
 
       </div>
