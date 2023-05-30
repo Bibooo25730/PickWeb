@@ -18,6 +18,7 @@ export default function Home() {
         <link rel="shortcut icon" type="images/x-icon" href="https://bibooo.top/upload/2023/03/favicon-removebg-preview.png"></link>
         <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/c/font_4012067_64drlh3sy1i.css"></link>
         <title>🍀 = 習慣孤獨 = Bibooo</title>
+       
       </Head>
       <main className={styles.main}>
          {/* <Header/> */}
