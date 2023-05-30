@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'zpix';
-  src: url(./Zpix.woff2);
+  src: url(https://bibooo.top/upload/2023/05/Zpix.woff2);
   font-weight: 400;
   font-style: normal;
   font-display: block;
@@ -69,7 +69,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: zpix;
+  font-family: 'zpix';
   line-height: 1.7;
   line-height: 1.1;
   font-weight: 700;
@@ -116,7 +116,9 @@ li {
   padding: 0;
   margin: 0;
 }
-
+p{
+  font-family: 'zpix';
+}
 img {
   max-width: 100%;
   display: block;
