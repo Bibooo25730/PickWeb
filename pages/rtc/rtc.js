@@ -279,8 +279,8 @@ export default function Rtc() {
     }
     // 摄像头
     function handledeep() {
-        left.current.style.display = 'none';
         if (connser) {
+            left.current.style.display = 'none';
             if (navigator.mediaDevices === undefined) {
                 navigator.mediaDevices = {};
             }
