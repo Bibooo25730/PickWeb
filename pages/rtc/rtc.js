@@ -338,7 +338,10 @@ export default function Rtc() {
             <div className={Rtclss.wrapContainer}>
                 <div  className={Rtclss.left}>
                     <div className={Rtclss.wrap}>
-                        <video id="video" webkit-playsinline="true" playsinline x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true" className={Rtclss.video} x5-video-orientation="portraint" controls></video>
+
+                        <video id="video" playsInline={true} x-webkit-airplay="allow" x5-video-player-type="h5" x5-video-player-fullscreen="true" className={Rtclss.video} x5-video-orientation="portraint" controls>
+                        <track src="captions_en.vtt" kind="captions" srcLang="en" label="english_captions"></track>
+                        </video>
                         <div ref={left} className={Rtclss.shext}><button onClick={handledeep}>摄像头</button></div>
                     </div>
                 </div>
@@ -348,8 +351,9 @@ export default function Rtc() {
                      <div ref={rightp} className={play.rightp}><span></span></div> */}
                     </div>
                     <div className={Rtclss.edit}>
-                        <input type={'search'} id={Rtclss.paragraph} onKeyDown={handleChange} placeholder="发送消息" rows="1" ></input>
-
+                    <label form={Rtclss.paragraph}>
+                        <input aria-label="Search" type={'search'} id={Rtclss.paragraph} onKeyDown={handleChange} placeholder="发送消息" rows="1" ></input>
+                    </label> 
                     </div>
                     <div className={Rtclss.main}>
                         <p className={Rtclss.drop_text}>拖拽文件到此或者点击
@@ -364,8 +368,9 @@ export default function Rtc() {
             </div>
 
             <div className={Rtclss.Rooms}>
-                <h3>.对.视频会议</h3>
+                <h2>.对.视频会议</h2>
                 <div className={Rtclss.server}>
+                    <label form={Rtclss.recId}></label>
                     <input ref={inRef} id={Rtclss.recId} ></input>
                     <button onClick={handleServer} className={Rtclss.btn}>连接</button>
                 </div>
