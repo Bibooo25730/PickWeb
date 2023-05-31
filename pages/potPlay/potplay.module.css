@@ -131,15 +131,17 @@
 }
 @keyframes ainimd{
    0%{
-    margin-top: 50px;
+    transform: translateY(50px);
+   
    }
    100%{
-   margin-top: 0px;
+    transform: translateY(0px);
    }
 }
-@keyframes texlength {
+/* @keyframes texlength {
     0%{
      color: brown;
+     
     }
     50%{
         color: tomato;
@@ -148,7 +150,7 @@
          display: none;
     }
     
-}
+} */
 
 @media (max-width: 768px){ 
     .playContainer{
