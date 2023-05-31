@@ -143,7 +143,7 @@ export default function PotPlay() {
                         </ul>
                     </div>
                     <section className={play.section} >
-                        <ReactPlayer light={<img src='https://s3.bmp.ovh/imgs/2023/05/13/5c05ef2372e745e3.webp' alt='Thumbnail' />} width={'100%'} height={'100%'} controls url={videoUrl}>
+                        <ReactPlayer light={true} width='100%' height='100%' controls url={videoUrl}>
                         </ReactPlayer>
                     </section>
 
