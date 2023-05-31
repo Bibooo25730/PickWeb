@@ -203,8 +203,8 @@ function drawIm() {
                 <div ref={cards} className={Colorcs.card} >
                     <div className={Colorcs.imgol}   >
                         <Image src={pick} id="imgol" alt="upload"   onClick={handleTouch}
-                       priority   width={965}
-                  height={497}></Image>
+                       priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"  width={640}
+                  height={386}></Image>
                         {/* <img id="imgol" style={{display:'none'}}   src="http://localhost:3000/_next/static/media/bg.a99082d1.png"></img> */}
                         <canvas style={{ display: 'none',marginTop:'80px' }} id="canvas" width="965" height="497" ></canvas>
                         
@@ -212,7 +212,7 @@ function drawIm() {
 
                         </div>
                     </div>
-                    <h3 ref={refims}>rgba()</h3>
+                    <h2 ref={refims}>rgba()</h2>
                 </div>
                 <div className={Colorcs.cards}>
                     <h3>拾色器</h3>
