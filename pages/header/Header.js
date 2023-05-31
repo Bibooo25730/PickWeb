@@ -58,7 +58,7 @@ export default function Header(props) {
           </div>
           <div className={header.leftbody}>
             <ul className={header.leftContainers}>
-              <li> <a >工具箱</a> </li>
+              <li> <a  href='#'>工具箱</a> </li>
               <li><a href='https://bibooo.top/s/about'>关于</a></li>
               <li> <a href='https://bibooo.top/archives'>归档</a></li>
               <li> <a href='https://bibooo.top/links'>友链</a></li>
@@ -75,42 +75,44 @@ export default function Header(props) {
 
       </div>
       <nav>
-        <ul className={header.nav_container}>
-          <div className={[`${header.leftButton} animate__animated animate__fadeInLeft`]}>
+        <menu className={header.nav_container}>
+          <ul className={[`${header.leftButton} animate__animated animate__fadeInLeft`]}>
             <li className={header.li} onClick={handleClick}><i className={`icon icon-brightness-moon ${show ? 'hidden' : 'show'}`}></i>
               <i className={`icon icon-brightness-sun  ${show ? 'show' : 'hidden'}`}></i>
             </li>
-            <li className={header.li}> <a >工具箱</a> </li>
+            <li className={header.li}> <a href='#' >工具箱</a> </li>
             <li className={header.li}><a href='https://bibooo.top/s/about'>关于</a></li>
+          </ul>
 
-
-          </div>
           {/* 手机端展示 这里写的有问题 */}
-          <li className={header.Phone_SITE}>
+          <div  className={header.Phone_SITE}>
             <div onClick={handleLeft} className={header.lines} >
               <span className={header.line}></span>
               <span className={header.line}></span>
               <span className={header.line}></span>
             </div>
             <div className={header.title}>
-              <h3>Bibooo</h3>
+              <h1>Bibooo</h1>
             </div>
             <div className={'ic  i-search'}></div>
-          </li>
+          </div >
 
-          <li className={header.li, header.liimg}>
+          <div className={header.li, header.liimg}>
             <a href='#'><Image className={header.img} src={ActivePic} alt="headPic" priority width={120}
               height={120}></Image></a>
-          </li>
-          <div className={[`${header.rightButton} animate__animated animate__fadeInRight`]}>
+          </div>
+         
+            <ul className={[`${header.rightButton} animate__animated animate__fadeInRight`]}>
             <li className={header.li}> <a href='https://bibooo.top/archives'>归档</a></li>
             <li className={header.li}> <a href='https://bibooo.top/links'>友链</a></li>
             <li className={header.li}><i className={'icon icon-paper-plane'}></i>  </li>
-          </div>
-        </ul>
+            </ul>
+          
+         
+        </menu>
       </nav>
       <div className={header.titleName}>
-        <h3 >Angel eyes</h3>
+        <h2 >Angel eyes</h2>
         <p>Our dignity is not worth much, but  the only thing we deserve.</p>
 
       </div>
