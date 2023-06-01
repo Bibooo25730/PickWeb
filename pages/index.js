@@ -7,6 +7,7 @@ import Fullpage from "./tolist/list"
 
 
 export default function Home() {
+
   return (
     <>
       <Head>
@@ -22,9 +23,11 @@ export default function Home() {
         <title>🍀 = 習慣孤獨 = Bibooo</title>
        
       </Head>
-      <main className={styles.main}>
+      
+      <main  className={styles.main}>
          {/* <Header/> */}
          <Fullpage/>
+        
          {/* <EssayList/> */}
         
       </main>

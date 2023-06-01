@@ -2,14 +2,16 @@ import header from './Header.module.css'
 import 'animate.css'
 import Image from 'next/image'
 import ActivePic from '../../public/activew.webp'
+import Lottie from '@/components/lottie'
 
-
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useRef } from 'react';
 export default function Header(props) {
   let full = props.full;
   let [show, setshow] = useState(true);
   const leRef = useRef(null);
+
+
   function handleClick() {
     setshow(show = !show);
    
@@ -46,10 +48,9 @@ export default function Header(props) {
   }
 
   return (
-
     <header onClick={handleContaer} className={header.header}>
       {/* 左边 */}
-
+ 
       <div ref={leRef} className={header.leftdiv}>
         <div className={header.leftContainer}>
           <div className={header.leftTop}>
@@ -118,6 +119,7 @@ export default function Header(props) {
       </div>
       <div className={header.xia} title="下滑"><b onClick={handlePage}>↓</b></div>
     </header>
+   
 
   )
 }

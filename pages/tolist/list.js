@@ -5,7 +5,15 @@ import Header from '../header/Header';
 import Color from "../Colorpicker/Colorpick"
 import PotPlay from '../potPlay/potplay';
 import Rtc from "../rtc/rtc"
+import Lottie from '@/components/lottie'
+import { useEffect,useState } from 'react';
+
+
+
+
 const Fullpage = () => (
+ 
+
   <ReactFullpage
     //fullpage options
     licenseKey = {'YOUR_KEY_HERE'}
@@ -13,6 +21,7 @@ const Fullpage = () => (
 
     render={({ state, fullpageApi }) => {
       return (
+       
         <ReactFullpage.Wrapper>
           <div className="section">
             < Header full={fullpageApi}/>

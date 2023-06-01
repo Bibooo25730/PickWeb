@@ -9,6 +9,7 @@ const alovaInstance = createAlova({
   requestAdapter: GlobalFetch(),
   responded: {
     onSuccess: async (response, method) => {
+      
       if (response.status >= 400) {
         console.log(response)
       }
@@ -22,6 +23,7 @@ const alovaInstance = createAlova({
       return json;
     },
     onError: (err, method) => {
+      console.log('123')
       console.log(err)
     }
   }
