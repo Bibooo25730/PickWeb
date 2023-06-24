@@ -1,6 +1,12 @@
-.fp-watermark{
-    display: none !important;
+.slide{
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease;
 }
-.fp-table{
-    justify-content: baseline !important;
+.section{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
