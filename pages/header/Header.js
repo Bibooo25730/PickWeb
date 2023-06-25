@@ -33,12 +33,12 @@ export default function Header(props) {
   }
   //指定位置
   function loction() {
-    if (typeof window !== 'undefined') {
-      if (window.location.hash = '#Essaycom') {
-        window.location.hash = ''
-      }
-      window.location.hash = "#Essaycom";
-    }
+    // if (typeof window !== 'undefined') {
+    //   if (window.location.hash === '#Essaycom') {
+    //     window.location.hash = ''
+    //   }
+    //   window.location.hash = "#Essaycom";
+    // }
 
   }
 
@@ -114,10 +114,11 @@ export default function Header(props) {
       </nav>
       <div className={header.titleName}>
         <h2 >Angel eyes</h2>
-        <p>Our dignity is not worth much, but  the only thing we deserve.</p>
+        <p>Our dignity is not worth much, </p>
+        <p>but  the only thing we deserve.</p>
 
       </div>
-      <div className={header.xia} title="下滑"><b onClick={handlePage}>↓</b></div>
+      {/*<div className={header.xia} title="下滑"><b onClick={handlePage}>↓</b></div>*/}
     </header>
    
 
